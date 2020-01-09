@@ -44,8 +44,6 @@ export function initialize(newTrackerId) {
     /* eslint-enable */
 
     window.snaptr('init', newTrackerId);
-
-    trackPageview();
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn(e);
