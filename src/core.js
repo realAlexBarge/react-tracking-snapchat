@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * React Snapchat Tracking Module
  *
@@ -8,7 +7,7 @@
 
 export function trackPageview() {
   try {
-    snaptr('track', 'PAGE_VIEW');
+    window.snaptr('track', 'PAGE_VIEW');
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn(e);
@@ -17,7 +16,7 @@ export function trackPageview() {
 
 export function trackEvent(eventAction = '') {
   try {
-    snaptr('track', eventAction);
+    window.snaptr('track', eventAction);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn(e);
@@ -29,23 +28,23 @@ export function initialize(newTrackerId) {
     /* eslint-disable */
     (function(e, t, n) {
       if (e.snaptr) return;
-      var a = (e.snaptr = function() {
+      const a = (e.snaptr = function() {
         a.handleRequest
           ? a.handleRequest.apply(a, arguments)
           : a.queue.push(arguments);
       });
       a.queue = [];
-      var s = 'script';
-      r = t.createElement(s);
+      const s = 'script';
+      const r = t.createElement(s);
       r.async = !0;
       r.src = n;
-      var u = t.getElementsByTagName(s)[0];
+      const u = t.getElementsByTagName(s)[0];
       u.parentNode.insertBefore(r, u);
     })(window, document, 'https://sc-static.net/scevent.min.js');
-
-    snaptr('init', newTrackerId);
-
     /* eslint-enable */
+
+    window.snaptr('init', newTrackerId);
+
     trackPageview();
   } catch (e) {
     // eslint-disable-next-line no-console
