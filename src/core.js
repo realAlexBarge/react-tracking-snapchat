@@ -14,9 +14,9 @@ export function trackPageview() {
   }
 }
 
-export function trackEvent(eventAction = '') {
+export function trackEvent(eventAction = '', eventParams = {}) {
   try {
-    window.snaptr('track', eventAction);
+    window.snaptr('track', eventAction, eventParams);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn(e);
